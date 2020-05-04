@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="mizuyeh的个人博客">
 <meta property="og:description" content="2020-5-2 static 关键字 不对对象进行操作，也就是说对所有该类的对象都适用  自动生成文档的注释： &#x2F;** *&#x2F;  boolean类型不能强制类型转换，避免了类似if(x&#x3D;0)的错误 可以用 b ? 1 : 0 进行转换  变量必须显式初始化  Math.floorMod(para1,para2); 可以解决 -3%2 -&gt; -1的问题  StrictMath 更准确，可预">
 <meta property="article:published_time" content="2020-05-02T16:50:38.456Z">
-<meta property="article:modified_time" content="2020-05-02T17:08:17.493Z">
+<meta property="article:modified_time" content="2020-05-04T14:28:05.980Z">
 <meta property="article:author" content="alick.chen">
 <meta name="twitter:card" content="summary">
   
@@ -210,6 +210,42 @@
 <blockquote>
 <p>java 数组需要new分配空间，且会自动元素值清0 </p>
 </blockquote>
+</li>
+</ol>
+<h2 id="2020-5-4"><a href="#2020-5-4" class="headerlink" title="2020-5-4"></a>2020-5-4</h2><ol>
+<li><p>如果想释放对象占用的内存，可以将对象的所有引用变量=null</p>
+</li>
+<li><p>this的用途：</p>
+<blockquote>
+<p>让类中的方法调用该类的另一个方法或属性，例如：在一个构造器中调用另一个重载的构造器<br>在方法中调用与局部变量重名的属性</p>
+</blockquote>
+</li>
+<li><p>static修饰的方法不能使用this引用，所以static方法不能访问非static成员</p>
+<p>（在方法中使用非static属性都显式或隐式的使用了this）</p>
+</li>
+<li><p>长度可变的形参只能有一个，且必须在最后的位置，例如：String… books</p>
+</li>
+<li><p>局部变量定义时不分配内存，赋初值时才分配内存，与c++有区别</p>
+</li>
+<li><p>能使用代码块的局部变量，就尽量不适用方法局部变量，例：循环变量i</p>
+</li>
+<li><p>java -d . hello.java </p>
+<p>-d会建立一个包名的文件夹,并将hello.class置于该文件夹中,不加则在当前目录下直接生成.class文件</p>
+</li>
+<li><p>通常使用公司域名倒写的形式作为包名,例:package org.yeeku;</p>
+</li>
+<li><p>import static 静态导入，导入全部或某个静态成员(属性、方法)</p>
+</li>
+<li><p>extends 继承(没有默认的构造器则不能继承)</p>
+</li>
+<li><p>super用途:</p>
+<blockquote>
+<p>调用父类中被子类重写的方法<br>子类不会继承父类的构造器，因此可能需要用super调用父类的构造器</p>
+</blockquote>
+</li>
+<li><p>多态: 编译类型与运行类型不同，将子类的对象赋值给父类的引用变量，该引用变量可以调用子类中重写的方法</p>
+</li>
+<li><p>静态初始化块在类初始化阶段执行，因此比普通初始化块（创建对象时执行）先执行，它们都比构造器先执行</p>
 </li>
 </ol>
 
