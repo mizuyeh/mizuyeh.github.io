@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>java知识点整理 | mizuyeh的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="集合单列: Collection 用迭代器访问集合元素1234567891011121314151617    Collection&lt;String&gt; c &#x3D; new ArrayList &lt;String&gt;();    c.add(&quot;hello&quot;);    c.add(&quot;world&quot;);    c.add(&quot;java&quot;);    Iterator&lt;String&gt; i">
+  <meta name="description" content="运算符 负数在计算机中是按补码存储的，计算时也是按补码进行计算 例如-5的补码是11111111 11111111 11111111 11111011 对-5取反 ~-5 结果为 00000000 00000000 00000000 00000100 结果是4  &gt;&gt;带符号右移 最高位用原有的符号补齐  &gt;&gt;&gt;不带符号右移 最高位用0补齐 int类型&gt;&gt;3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java知识点整理">
 <meta property="og:url" content="http://yoursite.com/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="mizuyeh的个人博客">
-<meta property="og:description" content="集合单列: Collection 用迭代器访问集合元素1234567891011121314151617    Collection&lt;String&gt; c &#x3D; new ArrayList &lt;String&gt;();    c.add(&quot;hello&quot;);    c.add(&quot;world&quot;);    c.add(&quot;java&quot;);    Iterator&lt;String&gt; i">
+<meta property="og:description" content="运算符 负数在计算机中是按补码存储的，计算时也是按补码进行计算 例如-5的补码是11111111 11111111 11111111 11111011 对-5取反 ~-5 结果为 00000000 00000000 00000000 00000100 结果是4  &gt;&gt;带符号右移 最高位用原有的符号补齐  &gt;&gt;&gt;不带符号右移 最高位用0补齐 int类型&gt;&gt;3">
 <meta property="article:published_time" content="2020-05-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-07T16:39:30.198Z">
+<meta property="article:modified_time" content="2020-05-31T09:45:17.980Z">
 <meta property="article:author" content="alick.chen">
 <meta name="twitter:card" content="summary">
   
@@ -173,7 +173,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="单列-Collection"><a href="#单列-Collection" class="headerlink" title="单列: Collection"></a>单列: Collection</h3><ol>
+        <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
+<li><p>负数在计算机中是按补码存储的，计算时也是按补码进行计算</p>
+<p>例如-5的补码是11111111 11111111 11111111 11111011</p>
+<p>对-5取反 ~-5 结果为 00000000 00000000 00000000 00000100 结果是4</p>
+</li>
+<li><p>&gt;&gt;带符号右移 最高位用原有的符号补齐</p>
+</li>
+<li><p>&gt;&gt;&gt;不带符号右移 最高位用0补齐</p>
+<p>int类型&gt;&gt;32位以上，先%32，例如num&gt;&gt;32就等于num</p>
+<p>long类型&gt;&gt;64位以上，先%64</p>
+</li>
+</ol>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol>
+<li>数组的内存都在堆内存中,创建数组会在堆内存中分配数组空间，并在栈中创建引用</li>
+<li>Arrays.toString() 以[value,value,..]形式输出数组的值</li>
+<li></li>
+</ol>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="单列-Collection"><a href="#单列-Collection" class="headerlink" title="单列: Collection"></a>单列: Collection</h3><ol>
 <li>用迭代器访问集合元素<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    Collection&lt;String&gt; c = <span class="keyword">new</span> ArrayList &lt;String&gt;();</span><br><span class="line">    c.add(<span class="string">"hello"</span>);</span><br><span class="line">    c.add(<span class="string">"world"</span>);</span><br><span class="line">    c.add(<span class="string">"java"</span>);</span><br><span class="line"></span><br><span class="line">    Iterator&lt;String&gt; it = c.iterator();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">        String s = it.next();</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">   ```  </span><br><span class="line"><span class="number">2</span>. 用foreach访问元素</span><br><span class="line">   ```java</span><br><span class="line">   <span class="keyword">for</span>(String s : c)&#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -195,9 +212,12 @@
 </ol>
 <hr>
 <h3 id="双列-Map"><a href="#双列-Map" class="headerlink" title="双列: Map"></a>双列: Map</h3><ol>
-<li>HashMap</li>
+<li>HashMap<blockquote>
+<p>Map.put</p>
+</blockquote>
+</li>
 </ol>
-
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3>
       
 
       
@@ -290,18 +310,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/07/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/31/github%E7%9B%B8%E5%85%B3/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          QT知识点整理
+          github相关
         
       </div>
     </a>
   
   
-    <a href="/2020/05/03/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java学习笔记</div>
+    <a href="/2020/05/02/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客文章-用hexo搭建个人博客</div>
       <i class="icon-circle-right"></i>
     </a>
   

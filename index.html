@@ -160,13 +160,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/07/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">QT知识点整理</a>
+      <a class="article-title" href="/2020/05/31/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">QT知识点整理</a>
     </h1>
   
 
         
-        <a href="/2020/05/07/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-05-07T14:46:09.168Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
+        <a href="/2020/05/31/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-05-31T08:42:58.020Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
         
       </header>
@@ -174,15 +174,56 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="date-2020-5-7"><a href="#date-2020-5-7" class="headerlink" title="date 2020-5-7"></a>date 2020-5-7</h2><ol>
-<li><p>播放音频文件</p>
- <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QMediaPlayer&gt;</span><br><span class="line"></span><br><span class="line">QMediaPlayer* player = <span class="keyword">new</span> QMediaPlayer;</span><br><span class="line">player-&gt;setMedia(QUrl(<span class="string">"qrc:/res/jay.mp3"</span>));<span class="comment">//指定源为qrc文件</span></span><br><span class="line">player-&gt;setVolume(<span class="number">50</span>);</span><br><span class="line">player-&gt;play();</span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="date-2020-5-7"><a href="#date-2020-5-7" class="headerlink" title="date 2020-5-7"></a>date 2020-5-7</h2><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ol>
 <li><p>解决cc1plus.exe: out of memory allocating 1073745919 bytes 问题</p>
 <p> 在工程.pro文件中添加</p>
  <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG += resources_big</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ol>
+<li><p>播放音频文件</p>
+ <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QMediaPlayer&gt;</span><br><span class="line"></span><br><span class="line">QMediaPlayer* player = <span class="keyword">new</span> QMediaPlayer;</span><br><span class="line">player-&gt;setMedia(QUrl(<span class="string">"qrc:/res/jay.mp3"</span>));<span class="comment">//指定源为qrc文件</span></span><br><span class="line">player-&gt;setVolume(<span class="number">50</span>);</span><br><span class="line">player-&gt;play();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置窗口固定大小</p>
+ <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>-&gt;setFixedSize(<span class="number">622</span>,<span class="number">343</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取按钮的信息</p>
+  <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QPushButton *p = (QPushButton *)<span class="keyword">this</span>-&gt;sender();</span><br><span class="line"><span class="keyword">if</span>(p!=NULL)&#123;</span><br><span class="line">     QString numStr = p-&gt;text();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置标题、图标</p>
+<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置标题</span></span><br><span class="line"> setWindowTitle(<span class="string">"GuessNumber"</span>);</span><br><span class="line"> <span class="comment">//设置图标</span></span><br><span class="line"> setWindowIcon(QIcon(<span class="string">":/E:/src/food1.jpg"</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>信号与槽的绑定</p>
+<ol>
+<li>connect(信号发送者，发送的信号，信号接收者，对应的槽函数); </li>
+</ol>
+<p>例如</p>
+ <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(ui-&gt;pushButton_2, SIGNAL(clicked(<span class="built_in">bool</span>)), <span class="keyword">this</span>, SLOT(close()));</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>用指定的槽函数格式，例如<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> on_pushButton_2_clicked();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>设置随机数</p>
+ <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include "stdlib.h"</span><br><span class="line">#include &lt;QTime&gt;</span><br><span class="line">qsrand(QTime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>).secsTo(<span class="attribute">QTime</span>::currentTime()));</span><br><span class="line">ans=qrand()%<span class="number">100</span>+<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int与QString互转</p>
+<p>int转QString：QString str = QString::number(tmp);</p>
+<p>QString转int   str.toInt();</p>
+</li>
+<li><p>textEdit操作</p>
+<p>在文本末尾追加一行内容：ui-&gt;textEdit-&gt;append(“”);</p>
+<p>在光标末尾追加内容：ui-&gt;textEdit-&gt;insertPlainText();</p>
+<p>将光标移到文本末尾：ui-&gt;textEdit-&gt;moveCursor(QTextCursor::End);</p>
+<p>删除内容：</p>
+ <figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取当前光标位置</span></span><br><span class="line">QTextCursor cursor=ui-&gt;textEdit-&gt;textCursor();</span><br><span class="line"><span class="comment">//获取当前行号</span></span><br><span class="line"><span class="built_in">int</span> row=cursor.blockNumber();</span><br><span class="line"><span class="comment">//删除光标前的一个内容</span></span><br><span class="line">cursor.deletePreviousChar();</span><br><span class="line"><span class="comment">//如果删到了上一行，则在textEdit中添加一行</span></span><br><span class="line"><span class="keyword">if</span>(cursor.blockNumber()!=row)&#123; </span><br><span class="line">    ui-&gt;textEdit-&gt;append(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>QMessageBox</p>
+</li>
+</ol>
+<p>   设置消息框样式static void about(QWidget *parent, const QString &amp;title, const QString &amp;text);</p>
 
       
 
@@ -195,93 +236,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/07/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java知识点整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">java知识点整理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-05-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="单列-Collection"><a href="#单列-Collection" class="headerlink" title="单列: Collection"></a>单列: Collection</h3><ol>
-<li>用迭代器访问集合元素<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    Collection&lt;String&gt; c = <span class="keyword">new</span> ArrayList &lt;String&gt;();</span><br><span class="line">    c.add(<span class="string">"hello"</span>);</span><br><span class="line">    c.add(<span class="string">"world"</span>);</span><br><span class="line">    c.add(<span class="string">"java"</span>);</span><br><span class="line"></span><br><span class="line">    Iterator&lt;String&gt; it = c.iterator();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">        String s = it.next();</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">   ```  </span><br><span class="line"><span class="number">2</span>. 用foreach访问元素</span><br><span class="line">   ```java</span><br><span class="line">   <span class="keyword">for</span>(String s : c)&#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-<blockquote>
-<p>List : 可重复</p>
-</blockquote>
-<ol>
-<li>ArrayList</li>
-<li>LinkedList</li>
-</ol>
-<hr>
-<blockquote>
-<p>Set : 不可重复</p>
-</blockquote>
-<ol>
-<li>HashSet: 无序 ; LinkedHashSet : 有序(输入输出的顺序)</li>
-<li>TreeSet : 自然顺序</li>
-</ol>
-<hr>
-<h3 id="双列-Map"><a href="#双列-Map" class="headerlink" title="双列: Map"></a>双列: Map</h3><ol>
-<li>HashMap</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/31/QT%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -318,13 +273,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">java学习笔记</a>
+      <a class="article-title" href="/2020/05/31/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">java学习笔记</a>
     </h1>
   
 
         
-        <a href="/2020/05/03/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-05-02T16:50:38.456Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+        <a href="/2020/05/31/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-05-31T08:42:57.817Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
         
       </header>
@@ -524,7 +479,184 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/31/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-github相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/31/github%E7%9B%B8%E5%85%B3/">github相关</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/31/github%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2020-05-31T08:42:57.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="date-2020-5-11"><a href="#date-2020-5-11" class="headerlink" title="date 2020-5-11"></a>date 2020-5-11</h2><h2 id="github搜索"><a href="#github搜索" class="headerlink" title="github搜索"></a>github搜索</h2><ol>
+<li>in:name XXX 按项目名字搜索</li>
+<li>stars:&gt;3000 forks:&gt;3000</li>
+<li>in:readme XXX 按项目自述搜索</li>
+<li>in:description 按描述搜索</li>
+<li>language:java 限定语言</li>
+<li>pushed:2020-5-11 限定最近更新时间</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/31/github%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java知识点整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">java知识点整理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-05-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
+<li><p>负数在计算机中是按补码存储的，计算时也是按补码进行计算</p>
+<p>例如-5的补码是11111111 11111111 11111111 11111011</p>
+<p>对-5取反 ~-5 结果为 00000000 00000000 00000000 00000100 结果是4</p>
+</li>
+<li><p>&gt;&gt;带符号右移 最高位用原有的符号补齐</p>
+</li>
+<li><p>&gt;&gt;&gt;不带符号右移 最高位用0补齐</p>
+<p>int类型&gt;&gt;32位以上，先%32，例如num&gt;&gt;32就等于num</p>
+<p>long类型&gt;&gt;64位以上，先%64</p>
+</li>
+</ol>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol>
+<li>数组的内存都在堆内存中,创建数组会在堆内存中分配数组空间，并在栈中创建引用</li>
+<li>Arrays.toString() 以[value,value,..]形式输出数组的值</li>
+<li></li>
+</ol>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="单列-Collection"><a href="#单列-Collection" class="headerlink" title="单列: Collection"></a>单列: Collection</h3><ol>
+<li>用迭代器访问集合元素<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    Collection&lt;String&gt; c = <span class="keyword">new</span> ArrayList &lt;String&gt;();</span><br><span class="line">    c.add(<span class="string">"hello"</span>);</span><br><span class="line">    c.add(<span class="string">"world"</span>);</span><br><span class="line">    c.add(<span class="string">"java"</span>);</span><br><span class="line"></span><br><span class="line">    Iterator&lt;String&gt; it = c.iterator();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">        String s = it.next();</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">   ```  </span><br><span class="line"><span class="number">2</span>. 用foreach访问元素</span><br><span class="line">   ```java</span><br><span class="line">   <span class="keyword">for</span>(String s : c)&#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>List : 可重复</p>
+</blockquote>
+<ol>
+<li>ArrayList</li>
+<li>LinkedList</li>
+</ol>
+<hr>
+<blockquote>
+<p>Set : 不可重复</p>
+</blockquote>
+<ol>
+<li>HashSet: 无序 ; LinkedHashSet : 有序(输入输出的顺序)</li>
+<li>TreeSet : 自然顺序</li>
+</ol>
+<hr>
+<h3 id="双列-Map"><a href="#双列-Map" class="headerlink" title="双列: Map"></a>双列: Map</h3><ol>
+<li>HashMap<blockquote>
+<p>Map.put</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/07/java%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">展开全文 >></a>
         </p>
       
 
